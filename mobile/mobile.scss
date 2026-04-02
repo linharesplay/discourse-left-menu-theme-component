@@ -6,7 +6,7 @@
   
   .wrap {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     width: 100%;
     padding: 0 8px;
@@ -15,7 +15,7 @@
 
   .contents {
     display: flex !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     align-items: center !important;
     width: 100%;
   }
@@ -30,45 +30,50 @@
     z-index: 1;
   }
 
-  // Panel contains the header icons - use flexbox with row-reverse to flip order
+  // Panel contains the header icons
   .panel {
     display: flex !important;
     align-items: center !important;
-    flex-direction: row-reverse !important;
+    width: 100%;
   }
 
   .d-header-icons {
     display: flex !important;
     align-items: center !important;
-    flex-direction: row-reverse !important;
+    width: 100%;
     gap: 2px;
   }
 
-  // === LEFT SECTION (using negative order to push to start) ===
-  // Hamburger menu - far left
+  // === LEFT SECTION (low order values) ===
+  // Hamburger menu - far left (order 1)
   .hamburger-dropdown {
-    order: -100 !important;
-    margin-right: auto !important;
+    order: 1 !important;
   }
 
-  // Avatar (current user) - after hamburger
+  // Avatar (current user) - after hamburger (order 2)
   .current-user {
-    order: -90 !important;
+    order: 2 !important;
   }
 
-  // Chat button - after avatar
+  // Chat button - after avatar (order 3)
   .chat-header-icon {
-    order: -80 !important;
+    order: 3 !important;
   }
 
-  // === RIGHT SECTION ===
-  // Search - on the right
+  // Spacer to push right elements to the right
+  .d-header-icons::after {
+    content: "";
+    flex-grow: 1;
+    order: 50;
+  }
+
+  // === RIGHT SECTION (high order values) ===
+  // Search - on the right (order 90)
   .search-dropdown {
     order: 90 !important;
-    margin-left: auto !important;
   }
 
-  // Login/Register buttons - far right
+  // Login/Register buttons - far right (order 100)
   .header-buttons {
     order: 100 !important;
     display: flex !important;

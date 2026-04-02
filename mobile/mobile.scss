@@ -1,5 +1,5 @@
 // Mobile header layout for Discourse
-// Layout: [hamburger | avatar | chat] --- [LOGO centered] --- [search | login/register]
+// Layout: [hamburger | chat] --- [LOGO centered] --- [avatar | search]
 
 .d-header {
   position: relative;
@@ -50,14 +50,9 @@
     order: 1 !important;
   }
 
-  // Avatar (current user) - after hamburger (order 2)
-  .current-user {
-    order: 2 !important;
-  }
-
-  // Chat button - after avatar (order 3)
+  // Chat button - after hamburger (order 2)
   .chat-header-icon {
-    order: 3 !important;
+    order: 2 !important;
   }
 
   // Spacer to push right elements to the right
@@ -68,6 +63,11 @@
   }
 
   // === RIGHT SECTION (high order values) ===
+  // Avatar (current user) - on the right, before search (order 85)
+  .current-user {
+    order: 85 !important;
+  }
+
   // Search - on the right (order 90)
   .search-dropdown {
     order: 90 !important;

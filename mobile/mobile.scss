@@ -1,14 +1,17 @@
 .d-header {
-  display: grid;
-  // Layout: left-section (hamburger, avatar, chat) | logo (center) | right-section (search, login/register)
-  grid-template-areas: 'left-menu avatar chat logo extra-info custom-header-icon-link-1 custom-header-icon-link-2 custom-header-icon-link-3 custom-header-icon-link-4 custom-header-icon-link-5 search header-buttons';
-  grid-template-columns: max-content max-content max-content 1fr max-content repeat(5, max-content) max-content max-content;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 8px;
   box-sizing: border-box;
-  align-items: center;
 
   & > .wrap {
-    &,
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    
     & .contents {
       display: contents;
     }
@@ -21,76 +24,64 @@
     }
   }
 
-  // Left section: hamburger menu
-  .hamburger-dropdown {
-    grid-area: left-menu;
-    padding-right: 5px;
-    order: 1;
+  // Logo - absolutely centered
+  .title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: unset;
+    z-index: 1;
   }
 
-  // Left section: avatar (current user)
+  // Left section container
+  .hamburger-dropdown,
+  .current-user,
+  .chat-header-icon {
+    position: relative;
+    z-index: 2;
+  }
+
+  // Left section: hamburger menu
+  .hamburger-dropdown {
+    order: 1;
+    padding-right: 5px;
+  }
+
+  // Left section: avatar (current user) - moved to left
   .current-user {
-    grid-area: avatar;
     order: 2;
   }
 
-  // Left section: chat button
+  // Left section: chat button - moved to left
   .chat-header-icon {
-    grid-area: chat;
     order: 3;
   }
 
-  // Center: logo
-  .title {
-    grid-area: logo;
-    max-width: unset;
-    text-align: center;
-    justify-self: center;
-    order: 4;
-  }
-
-  // Extra info (topic title when scrolling)
+  // Extra info (topic title when scrolling) - hide on mobile to avoid overlap with centered logo
   .extra-info-wrapper {
-    grid-area: extra-info;
-    width: auto;
-    max-width: calc(100vw - 200px);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    order: 5;
+    display: none;
   }
 
-  // Custom header icon links
-  .custom-header-icon-link:nth-child(1) {
-    grid-area: custom-header-icon-link-1;
-  }
-  .custom-header-icon-link:nth-child(2) {
-    grid-area: custom-header-icon-link-2;
-  }
-  .custom-header-icon-link:nth-child(3) {
-    grid-area: custom-header-icon-link-3;
-  }
-  .custom-header-icon-link:nth-child(4) {
-    grid-area: custom-header-icon-link-4;
-  }
-  .custom-header-icon-link:nth-child(5) {
-    grid-area: custom-header-icon-link-5;
+  // Custom header icon links - hide on mobile
+  .custom-header-icon-link {
+    display: none;
   }
 
   // Right section: search
   .search-dropdown {
-    grid-area: search;
-    order: 10;
+    order: 100;
+    position: relative;
+    z-index: 2;
   }
 
   // Right section: login/register buttons
   .header-buttons {
-    grid-area: header-buttons;
-    order: 11;
+    order: 101;
+    position: relative;
+    z-index: 2;
     
     .login-button,
     .sign-up-button {
-      // Ensure buttons are visible on mobile
       display: inline-flex !important;
     }
   }

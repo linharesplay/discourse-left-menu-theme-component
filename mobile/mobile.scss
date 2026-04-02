@@ -110,9 +110,23 @@ body.logged-in .d-header {
     display: none !important;
   }
   
-  .current-user {
+  // Force avatar to be visible - Discourse hides it on mobile by default
+  .current-user,
+  .current-user .icon,
+  .current-user a,
+  .current-user img,
+  .current-user .avatar {
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     align-items: center;
+  }
+  
+  .current-user img,
+  .current-user .avatar {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50%;
   }
 }
 

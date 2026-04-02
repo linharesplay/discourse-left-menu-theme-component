@@ -1,4 +1,3 @@
-center_logo:
-  type: bool
-  default: false
-  description: 'centers the logo on mobile'
+# No settings needed - logo is always centered
+# Left side: hamburger menu, avatar (logged in), chat button
+# Right side: search, login/register (logged out)

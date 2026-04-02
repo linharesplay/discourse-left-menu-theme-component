@@ -1,10 +1,11 @@
 .d-header {
   display: grid;
-  grid-template-areas: 'left-menu logo custom-header-icon-link-1 custom-header-icon-link-2 custom-header-icon-link-3 custom-header-icon-link-4 custom-header-icon-link-5 extra-info chat header-buttons search right-menu';
-  grid-template-columns: max-content 1fr repeat(11, max-content);
+  // Layout: left-section (hamburger, avatar, chat) | logo (center) | right-section (search, login/register)
+  grid-template-areas: 'left-menu avatar chat logo extra-info custom-header-icon-link-1 custom-header-icon-link-2 custom-header-icon-link-3 custom-header-icon-link-4 custom-header-icon-link-5 search header-buttons';
+  grid-template-columns: max-content max-content max-content 1fr max-content repeat(5, max-content) max-content max-content;
   padding: 0 8px;
   box-sizing: border-box;
-  align-content: center;
+  align-items: center;
 
   & > .wrap {
     &,
@@ -20,26 +21,46 @@
     }
   }
 
-  .header-buttons {
-    grid-area: header-buttons;
-  }
-  .search-dropdown {
-    grid-area: search;
-  }
+  // Left section: hamburger menu
   .hamburger-dropdown {
-    padding-right: 5px;
     grid-area: left-menu;
+    padding-right: 5px;
+    order: 1;
   }
+
+  // Left section: avatar (current user)
   .current-user {
-    grid-area: right-menu;
+    grid-area: avatar;
+    order: 2;
   }
-  .extra-info-wrapper {
-    grid-area: extra-info;
-    width: calc(100vw - 100px);
-  }
+
+  // Left section: chat button
   .chat-header-icon {
     grid-area: chat;
+    order: 3;
   }
+
+  // Center: logo
+  .title {
+    grid-area: logo;
+    max-width: unset;
+    text-align: center;
+    justify-self: center;
+    order: 4;
+  }
+
+  // Extra info (topic title when scrolling)
+  .extra-info-wrapper {
+    grid-area: extra-info;
+    width: auto;
+    max-width: calc(100vw - 200px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    order: 5;
+  }
+
+  // Custom header icon links
   .custom-header-icon-link:nth-child(1) {
     grid-area: custom-header-icon-link-1;
   }
@@ -56,12 +77,45 @@
     grid-area: custom-header-icon-link-5;
   }
 
-  // some protection for text-only site titles
-  .title {
-    grid-area: logo;
-    @if ($center_logo == 'true') {
-      margin: 0 auto;
+  // Right section: search
+  .search-dropdown {
+    grid-area: search;
+    order: 10;
+  }
+
+  // Right section: login/register buttons
+  .header-buttons {
+    grid-area: header-buttons;
+    order: 11;
+    
+    .login-button,
+    .sign-up-button {
+      // Ensure buttons are visible on mobile
+      display: inline-flex !important;
     }
-    max-width: unset;
+  }
+}
+
+// When user is NOT logged in, hide avatar area and show login buttons
+.d-header:not(.header-logged-in) {
+  .current-user {
+    display: none;
+  }
+  
+  .header-buttons {
+    display: flex;
+    gap: 4px;
+  }
+}
+
+// When user IS logged in, show avatar on the left
+.d-header.header-logged-in {
+  .header-buttons {
+    display: none;
+  }
+  
+  .current-user {
+    display: flex;
+    align-items: center;
   }
 }

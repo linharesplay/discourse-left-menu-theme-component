@@ -1,112 +1,119 @@
+// Mobile header layout for Discourse
+// Layout: [hamburger | avatar | chat] --- [LOGO centered] --- [search | login/register]
+
 .d-header {
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 8px;
-  box-sizing: border-box;
-
-  & > .wrap {
+  
+  .wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    
-    & .contents {
-      display: contents;
-    }
+    padding: 0 8px;
+    box-sizing: border-box;
   }
 
-  .panel {
-    &,
-    & > .d-header-icons {
-      display: contents;
-    }
+  .contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 
-  // Logo - absolutely centered
+  // Logo - absolutely centered in the header
   .title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: unset;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
     z-index: 1;
   }
 
-  // Left section container
-  .hamburger-dropdown,
-  .current-user,
-  .chat-header-icon {
-    position: relative;
-    z-index: 2;
+  // Panel contains the header icons
+  .panel {
+    display: flex;
+    align-items: center;
   }
 
-  // Left section: hamburger menu
+  .d-header-icons {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  // === LEFT SECTION ===
+  // Hamburger menu - stays on left
   .hamburger-dropdown {
-    order: 1;
-    padding-right: 5px;
+    order: 1 !important;
   }
 
-  // Left section: avatar (current user) - moved to left
-  .current-user {
-    order: 2;
-  }
-
-  // Left section: chat button - moved to left
+  // Chat button - move to left (after hamburger)
   .chat-header-icon {
-    order: 3;
+    order: 2 !important;
   }
 
-  // Extra info (topic title when scrolling) - hide on mobile to avoid overlap with centered logo
-  .extra-info-wrapper {
-    display: none;
+  // Avatar (current user) - move to left (after chat)
+  .current-user {
+    order: 3 !important;
   }
 
-  // Custom header icon links - hide on mobile
-  .custom-header-icon-link {
-    display: none;
-  }
-
-  // Right section: search
+  // === RIGHT SECTION ===
+  // Search - on the right
   .search-dropdown {
-    order: 100;
-    position: relative;
-    z-index: 2;
+    order: 98 !important;
   }
 
-  // Right section: login/register buttons
+  // Login/Register buttons - far right
   .header-buttons {
-    order: 101;
-    position: relative;
-    z-index: 2;
+    order: 99 !important;
+    display: flex !important;
+    gap: 4px;
     
-    .login-button,
-    .sign-up-button {
+    .btn {
       display: inline-flex !important;
     }
   }
+
+  // Hide extra info and custom links on mobile to keep it clean
+  .extra-info-wrapper {
+    display: none !important;
+  }
+
+  .custom-header-icon-link {
+    display: none !important;
+  }
+
+  // All icons should have z-index above the centered logo
+  .hamburger-dropdown,
+  .chat-header-icon,
+  .current-user,
+  .search-dropdown,
+  .header-buttons {
+    position: relative;
+    z-index: 2;
+  }
 }
 
-// When user is NOT logged in, hide avatar area and show login buttons
-.d-header:not(.header-logged-in) {
-  .current-user {
-    display: none;
-  }
-  
+// Logged in state - show avatar, hide login buttons
+body.logged-in .d-header {
   .header-buttons {
-    display: flex;
-    gap: 4px;
-  }
-}
-
-// When user IS logged in, show avatar on the left
-.d-header.header-logged-in {
-  .header-buttons {
-    display: none;
+    display: none !important;
   }
   
   .current-user {
-    display: flex;
+    display: flex !important;
     align-items: center;
+  }
+}
+
+// Logged out state - hide avatar area, show login buttons
+body:not(.logged-in) .d-header {
+  .current-user {
+    display: none !important;
+  }
+  
+  .header-buttons {
+    display: flex !important;
   }
 }

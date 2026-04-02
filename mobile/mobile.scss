@@ -5,18 +5,18 @@
   position: relative;
   
   .wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100%;
     padding: 0 8px;
     box-sizing: border-box;
   }
 
   .contents {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     width: 100%;
   }
 
@@ -30,43 +30,47 @@
     z-index: 1;
   }
 
-  // Panel contains the header icons
+  // Panel contains the header icons - use flexbox with row-reverse to flip order
   .panel {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row-reverse !important;
   }
 
   .d-header-icons {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row-reverse !important;
     gap: 2px;
   }
 
-  // === LEFT SECTION ===
-  // Hamburger menu - stays on left
+  // === LEFT SECTION (using negative order to push to start) ===
+  // Hamburger menu - far left
   .hamburger-dropdown {
-    order: 1 !important;
+    order: -100 !important;
+    margin-right: auto !important;
   }
 
-  // Chat button - move to left (after hamburger)
-  .chat-header-icon {
-    order: 2 !important;
-  }
-
-  // Avatar (current user) - move to left (after chat)
+  // Avatar (current user) - after hamburger
   .current-user {
-    order: 3 !important;
+    order: -90 !important;
+  }
+
+  // Chat button - after avatar
+  .chat-header-icon {
+    order: -80 !important;
   }
 
   // === RIGHT SECTION ===
   // Search - on the right
   .search-dropdown {
-    order: 98 !important;
+    order: 90 !important;
+    margin-left: auto !important;
   }
 
   // Login/Register buttons - far right
   .header-buttons {
-    order: 99 !important;
+    order: 100 !important;
     display: flex !important;
     gap: 4px;
     

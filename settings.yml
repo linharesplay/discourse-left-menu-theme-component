@@ -1,3 +1,4 @@
-# No settings needed - logo is always centered
-# Left side: hamburger menu, avatar (logged in), chat button
-# Right side: search, login/register (logged out)
+enabled:
+  type: bool
+  default: true
+  description: 'Enable mobile header layout customization'

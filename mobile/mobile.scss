@@ -21,7 +21,7 @@
     width: 100%;
   }
 
-  // Logo - absolutely centered in the header
+  // Logo - absolutely centered in the header, sized to match icons
   .title {
     position: absolute !important;
     left: 50% !important;
@@ -29,6 +29,16 @@
     transform: translate(-50%, -50%) !important;
     margin: 0 !important;
     z-index: 1;
+    
+    // Reduce logo size to be proportional with header icons
+    img,
+    .logo-mobile,
+    .logo-small,
+    .d-logo {
+      max-height: 28px !important;
+      height: auto !important;
+      width: auto !important;
+    }
   }
 
   // Panel contains the header icons

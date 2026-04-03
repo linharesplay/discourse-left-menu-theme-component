@@ -74,8 +74,29 @@
     display: flex !important;
     gap: 4px;
     
-    .btn {
+    // Hide sign-up button completely
+    .sign-up-button {
+      display: none !important;
+    }
+    
+    // Login button - show only icon, hide text
+    .login-button {
       display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 8px !important;
+      min-width: auto !important;
+      
+      // Hide text inside login button
+      .d-button-label {
+        display: none !important;
+      }
+      
+      // Show only the icon
+      .d-icon {
+        display: inline-block !important;
+        margin: 0 !important;
+      }
     }
   }
 

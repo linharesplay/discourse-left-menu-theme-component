@@ -1,7 +1,8 @@
 // Mobile header layout for Discourse
 // Layout: [hamburger | chat] --- [LOGO centered] --- [search | login/register | avatar]
+// Only applies when NOT scrolling inside a topic (no extra-info visible)
 
-.d-header {
+.d-header:not(:has(.extra-info-wrapper.topic-info-visible)):not(:has(.extra-info-wrapper .topic-link)):not(.header-topic-info-visible) {
   position: relative;
   
   .wrap {
@@ -110,9 +111,9 @@
     display: none !important;
   }
 
-  // Extra info (topic title) - hidden by default, shown when scrolling in a topic
+  // Hide extra info on this layout (shown by default on topic scroll)
   .extra-info-wrapper {
-    display: none;
+    display: none !important;
   }
 
   // All icons should have z-index above the centered logo
@@ -126,66 +127,4 @@
   }
 }
 
-// When inside a topic and scrolling (extra-info is visible)
-// Move logo to left and show topic title
-.d-header .extra-info-wrapper {
-  // When the extra-info has content, it will be displayed
-}
 
-.d-header.header-topic-info-visible,
-.d-header:has(.extra-info-wrapper .topic-link) {
-  // Move logo to the left (no longer centered)
-  .title {
-    position: relative !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-    order: 3 !important;
-    z-index: 2;
-    flex-shrink: 0;
-    
-    // Make logo smaller when showing topic info
-    .logo-mobile {
-      max-height: 32px !important;
-    }
-  }
-
-  // Show topic info after the logo
-  .extra-info-wrapper {
-    display: flex !important;
-    order: 4 !important;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    margin-left: 8px;
-    z-index: 2;
-    position: relative;
-
-    .extra-info {
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .topic-link {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .categories-wrapper,
-    .topic-header-extra {
-      display: flex;
-      gap: 4px;
-      font-size: 12px;
-      overflow: hidden;
-    }
-  }
-
-  // Push the spacer to after the extra info
-  .d-header-icons::after {
-    order: 50;
-  }
-}

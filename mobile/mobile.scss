@@ -1,5 +1,5 @@
 // Mobile header layout for Discourse
-// Layout: [hamburger | chat] --- [LOGO centered] --- [search | login/register]
+// Layout: [hamburger | chat] --- [LOGO centered] --- [search | login/register | avatar]
 
 .d-header {
   position: relative;
@@ -68,7 +68,7 @@
     order: 90 !important;
   }
 
-  // Login/Register buttons - far right (order 100)
+  // Login/Register buttons (order 100)
   .header-buttons {
     order: 100 !important;
     display: flex !important;
@@ -77,6 +77,11 @@
     .btn {
       display: inline-flex !important;
     }
+  }
+
+  // Avatar/User menu - far right, last position (order 110)
+  .current-user {
+    order: 110 !important;
   }
 
   // Hide extra info and custom links on mobile to keep it clean
@@ -92,7 +97,8 @@
   .hamburger-dropdown,
   .chat-header-icon,
   .search-dropdown,
-  .header-buttons {
+  .header-buttons,
+  .current-user {
     position: relative;
     z-index: 2;
   }

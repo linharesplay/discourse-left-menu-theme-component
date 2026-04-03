@@ -1,5 +1,5 @@
 // Mobile header layout for Discourse
-// Layout: [hamburger | chat] --- [LOGO centered] --- [avatar | search]
+// Layout: [hamburger | chat] --- [LOGO centered] --- [search | login/register]
 
 .d-header {
   position: relative;
@@ -63,11 +63,6 @@
   }
 
   // === RIGHT SECTION (high order values) ===
-  // Avatar (current user) - on the right, before search (order 85)
-  .current-user {
-    order: 85 !important;
-  }
-
   // Search - on the right (order 90)
   .search-dropdown {
     order: 90 !important;
@@ -96,74 +91,9 @@
   // All icons should have z-index above the centered logo
   .hamburger-dropdown,
   .chat-header-icon,
-  .current-user,
   .search-dropdown,
   .header-buttons {
     position: relative;
     z-index: 2;
-  }
-}
-
-// Logged in state - show avatar, hide login buttons
-html.logged-in .d-header,
-body.logged-in .d-header {
-  .header-buttons {
-    display: none !important;
-  }
-  
-  // Force avatar/user menu button to be visible - Discourse hides it on mobile by default
-  // Multiple selectors to cover different Discourse versions
-  .current-user,
-  .toggle-current-user,
-  .header-dropdown-toggle.current-user,
-  .user-menu-button-avatar,
-  [data-toggle="current-user"] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    align-items: center;
-    order: 85 !important;
-  }
-  
-  // Avatar image inside the user menu button
-  .current-user img,
-  .current-user .avatar,
-  .toggle-current-user img,
-  .user-menu-button-avatar img,
-  .header-dropdown-toggle.current-user img,
-  [data-toggle="current-user"] img {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 50%;
-  }
-  
-  // Also target the icon wrapper
-  .current-user .icon,
-  .current-user a,
-  .toggle-current-user a,
-  .header-dropdown-toggle.current-user a {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    align-items: center;
-  }
-}
-
-// Logged out state - hide avatar area, show login buttons
-html:not(.logged-in) .d-header,
-body:not(.logged-in) .d-header {
-  .current-user,
-  .toggle-current-user,
-  .header-dropdown-toggle.current-user,
-  .user-menu-button-avatar,
-  [data-toggle="current-user"] {
-    display: none !important;
-  }
-  
-  .header-buttons {
-    display: flex !important;
   }
 }

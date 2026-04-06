@@ -31,10 +31,7 @@
     z-index: 1;
     
     // Reduce logo size to be proportional with header icons
-    img,
-    .logo-mobile,
-    .logo-small,
-    .d-logo {
+    .logo-mobile, .logo-small, .d-logo {
       max-height: 28px !important;
       height: auto !important;
       width: auto !important;

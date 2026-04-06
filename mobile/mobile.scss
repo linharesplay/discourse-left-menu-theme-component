@@ -36,6 +36,13 @@
       height: auto !important;
       width: auto !important;
   }
+ // Reduce logo size to be proportional with header icons
+    .logo-mobile, .logo-small, .d-logo {
+      max-height: 28px !important;
+      height: auto !important;
+      width: auto !important;
+  }
+}
 
   // Panel contains the header icons
   .panel {

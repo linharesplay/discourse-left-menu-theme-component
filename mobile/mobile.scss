@@ -107,10 +107,29 @@
         display: none !important;
       }
       
-      // Show only the icon
+      // Show only the icon - replace with Lucide log-in icon
       .d-icon {
         display: inline-block !important;
         margin: 0 !important;
+        
+        // Hide the original Font Awesome icon
+        &::before {
+          display: none !important;
+        }
+        
+        // Use Lucide log-in SVG as background
+        &.d-icon-user {
+          width: 20px;
+          height: 20px;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23919191' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpolyline points='10 17 15 12 10 7'/%3E%3Cline x1='15' x2='3' y1='12' y2='12'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: contain;
+          
+          svg {
+            display: none !important;
+          }
+        }
       }
     }
   }

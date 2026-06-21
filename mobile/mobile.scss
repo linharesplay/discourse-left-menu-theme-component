@@ -143,4 +143,35 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
   }
 }
 
+// === Full-page chat: perfectly center the "Chat"/channel title ===
+// By default Discourse centers the title within the space left between the
+// left link ("Forum") and the right controls (language + avatar). Because the
+// right side is wider than the left, the title looks pushed to the left.
+// This pins the title to the exact horizontal center of the screen instead.
+body.has-full-page-chat .d-header {
+  .c-navbar__title,
+  .c-navbar-title {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    text-align: center !important;
+    z-index: 1;
+    // Keep it from overlapping the side controls on very narrow screens
+    max-width: 50vw;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // Ensure the side links/controls stay clickable above the centered title
+  .c-navbar__back-button,
+  .c-navbar__title-buttons,
+  .c-navbar .btn,
+  .current-user {
+    position: relative;
+    z-index: 2;
+  }
+}
+
 

@@ -1,8 +1,10 @@
 // Mobile header layout for Discourse
 // Layout: [hamburger | chat] --- [LOGO centered] --- [search | login/register | avatar]
 // Only applies when NOT scrolling inside a topic (no extra-info visible)
+// Skipped entirely on full-page chat so Discourse's native chat navbar
+// (the "Forum" back link + "Chat"/channel title) renders normally.
 
-.d-header:not(:has(.extra-info-wrapper.topic-info-visible)):not(:has(.extra-info-wrapper .topic-link)):not(.header-topic-info-visible) {
+body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-visible)):not(:has(.extra-info-wrapper .topic-link)):not(.header-topic-info-visible) {
   position: relative;
   
   .wrap {

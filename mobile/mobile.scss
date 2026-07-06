@@ -103,16 +103,28 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
       justify-content: center;
       padding: 8px !important;
       min-width: auto !important;
-      
+
       // Hide text inside login button
       .d-button-label {
         display: none !important;
       }
-      
-      // Show only the icon
+
+      // Replace the default "user" icon with "arrow-right-to-bracket".
+      // Scoped to the header login button only, so the global `user`
+      // icon (avatars, menus, etc.) is left untouched.
       .d-icon {
-        display: inline-block !important;
+        // Hide the original SVG glyph without collapsing its box,
+        // so the masked replacement keeps the same size/alignment.
+        color: transparent !important;
+        width: 1em;
+        height: 1em;
         margin: 0 !important;
+        background-color: currentColor;
+        -webkit-mask: var(--login-icon) no-repeat center / contain;
+        mask: var(--login-icon) no-repeat center / contain;
+
+        // arrow-right-to-bracket (FontAwesome solid)
+        --login-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M352 96l64 0c17.7 0 32 14.3 32 32l0 256c0 17.7-14.3 32-32 32l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l64 0c53 0 96-43 96-96l0-256c0-53-43-96-96-96l-64 0c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-9.4 182.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L242.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z'/%3E%3C/svg%3E");
       }
     }
   }

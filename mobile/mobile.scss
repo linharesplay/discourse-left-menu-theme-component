@@ -99,9 +99,11 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
     // Login button - show only icon, hide text
     .login-button {
       display: inline-flex !important;
-      align-items: center;
-      justify-content: center;
-      padding: 8px !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 !important;
+      width: 40px !important;
+      height: 40px !important;
       min-width: auto !important;
 
       // Hide text inside login button
@@ -109,11 +111,14 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
         display: none !important;
       }
 
-      // Keep the icon flush inside the compact mobile button. The actual
-      // icon swap (user -> arrow-right-to-bracket) lives in common.scss so
-      // it also applies on desktop.
+      // Perfectly center the icon inside the compact square button. The
+      // actual icon swap (user -> arrow-right-to-bracket) lives in
+      // common.scss so it also applies on desktop.
       .d-icon {
+        display: block !important;
         margin: 0 !important;
+        line-height: 1 !important;
+        vertical-align: middle !important;
       }
     }
   }

@@ -109,27 +109,11 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
         display: none !important;
       }
 
-      // Replace the default "user" icon with "arrow-right-to-bracket".
-      // Scoped to the header login button only, so the global `user`
-      // icon (avatars, menus, etc.) is left untouched.
+      // Keep the icon flush inside the compact mobile button. The actual
+      // icon swap (user -> arrow-right-to-bracket) lives in common.scss so
+      // it also applies on desktop.
       .d-icon {
-        // Hide the original Lucide glyph (stroke + fill) WITHOUT touching
-        // `color`, because the masked replacement below is painted with
-        // `currentColor` and must stay visible.
-        fill: transparent !important;
-        stroke: transparent !important;
-
-        // Paint the replacement icon: currentColor fills the element and the
-        // mask clips it to the arrow-right-to-bracket shape.
-        width: 1em;
-        height: 1em;
         margin: 0 !important;
-        background-color: currentColor;
-        -webkit-mask: var(--login-icon) no-repeat center / contain;
-        mask: var(--login-icon) no-repeat center / contain;
-
-        // Lucide "log-in" (arrow-right-to-bracket), stroke-based 24x24 glyph.
-        --login-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4'/%3E%3Cpolyline points='10 17 15 12 10 7'/%3E%3Cline x1='15' x2='3' y1='12' y2='12'/%3E%3C/svg%3E");
       }
     }
   }

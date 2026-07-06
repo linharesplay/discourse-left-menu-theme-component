@@ -113,6 +113,9 @@ body:not(.has-full-page-chat) .d-header:not(:has(.extra-info-wrapper.topic-info-
       // icon swap (user -> arrow-right-to-bracket) lives in common.scss so
       // it also applies on desktop.
       .d-icon {
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         margin: 0 !important;
       }
     }
